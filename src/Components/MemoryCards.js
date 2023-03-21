@@ -14,14 +14,32 @@ import Card from "./Card";
 const MemoryCards = () => {
     const [images, setImages] = useState([finn, bmo, fern, gunther, iceKing, ogIce, pb, lich, marceline, jake])
 
-    useEffect(() => {
+    function randomizeImages() {
+        let array = images;
+        let currentIndex = array.length;
+        
+        while(currentIndex !== 0) {
 
+            let randomIndex = Math.floor(Math.random() * currentIndex);
+            currentIndex -= 1;
+
+            [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]]
+        }
+        setImages(array)
+        console.log("hello")
+        console.log(images)
+    }
+
+    useEffect(() => {
+        randomizeImages()
     }, [images])
 
     return (
         <div>
-            {images.map(source =>(
-                <Card source={source}></Card>
+            {images.map((source, index) =>(
+                <Card source={source}
+                      randomize={randomizeImages}
+                      key={index}></Card>
             ))}
         </div>
     )

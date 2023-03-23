@@ -16,10 +16,10 @@ const Scores = () => {
     }, [score])
 
     return (
-        <>
+        <div>
             <p>The Current score is {score}</p>
             <p>The Current HighScore is {highScore}</p>
-        </>
+        </div>
     )
 }
 

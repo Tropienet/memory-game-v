@@ -12,6 +12,7 @@ import pb from "./Images/pb.webp"
 import Card from "./Card";
 import { useSelector, useDispatch } from "react-redux";
 import { increment, reset } from "../Common/score";
+import "../Layout/memoryCardStyle.css"
 
 const MemoryCards = () => {
     const dispatch = useDispatch();

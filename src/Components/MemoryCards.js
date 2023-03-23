@@ -11,11 +11,22 @@ import ogIce from "./Images/ogIce.webp"
 import pb from "./Images/pb.webp"
 import Card from "./Card";
 import { useSelector, useDispatch } from "react-redux";
-import { increment } from "../Common/score";
+import { increment, reset } from "../Common/score";
 
 const MemoryCards = () => {
     const dispatch = useDispatch();
     const [images, setImages] = useState([finn, bmo, fern, gunther, iceKing, ogIce, pb, lich, marceline, jake])
+    const [cardsThatWereClicked, setCardsThatWereClicked] = useState([]);
+
+    function addCardToClickedList(card) {
+        if(!cardsThatWereClicked.includes(card)) {
+            setCardsThatWereClicked(cardsThatWereClicked.concat(card))
+            console.log(cardsThatWereClicked);
+        }else {
+            dispatch(reset())
+            setCardsThatWereClicked([])
+        }
+    }
 
     function randomizeImages() {
         let array = [...images];
@@ -38,6 +49,7 @@ const MemoryCards = () => {
         <div>
             {images.map((source, index) =>(
                 <Card source={source}
+                      addCardToList={addCardToClickedList}
                       randomize={randomizeImages}
                       incrementScore={() => dispatch(increment())}
                       key={index}></Card>

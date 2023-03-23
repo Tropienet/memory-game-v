@@ -1,6 +1,7 @@
 import React from "react";
 
 const Card = (props) => {
+    
 
     return (
         <>
@@ -8,7 +9,9 @@ const Card = (props) => {
                  alt={`${props.source} from adventure time`}
                  onClick={() => {
                     props.randomize()
-                    props.incrementScore()}} />
+                    props.incrementScore()
+                    props.addCardToList(props.source);
+                    }} />
         </>
     )
 }

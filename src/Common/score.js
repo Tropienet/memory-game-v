@@ -8,11 +8,14 @@ export const scoreSlice = createSlice({
     reducers: {
         increment: state => {
             state.value += 1
+        },
+        reset: state => {
+            state.value = 0;
         }
     }
 })
 
-export const { increment } = scoreSlice.actions
+export const { increment, reset } = scoreSlice.actions
 
 export default scoreSlice.reducer
 

@@ -10,12 +10,15 @@ import marceline from "./Images/marceline.webp"
 import ogIce from "./Images/ogIce.webp"
 import pb from "./Images/pb.webp"
 import Card from "./Card";
+import { useSelector, useDispatch } from "react-redux";
+import { increment } from "../Common/score";
 
 const MemoryCards = () => {
+    const dispatch = useDispatch();
     const [images, setImages] = useState([finn, bmo, fern, gunther, iceKing, ogIce, pb, lich, marceline, jake])
 
     function randomizeImages() {
-        let array = images;
+        let array = [...images];
         let currentIndex = array.length;
         
         while(currentIndex !== 0) {
@@ -26,12 +29,9 @@ const MemoryCards = () => {
             [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]]
         }
         setImages(array)
-        console.log("hello")
-        console.log(images)
     }
 
     useEffect(() => {
-        randomizeImages()
     }, [images])
 
     return (
@@ -39,6 +39,7 @@ const MemoryCards = () => {
             {images.map((source, index) =>(
                 <Card source={source}
                       randomize={randomizeImages}
+                      incrementScore={() => dispatch(increment())}
                       key={index}></Card>
             ))}
         </div>

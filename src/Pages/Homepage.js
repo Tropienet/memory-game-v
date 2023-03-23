@@ -1,13 +1,12 @@
 import React from "react"
-import { ScoreComponent } from "../Components/ScoreComponent";
 import MemoryCards from "../Components/MemoryCards";
+import Scores from "../Components/Scores";
 
 
 const Homepage = () => {
     return (
         <div>
-            Hello World
-            <ScoreComponent />
+            <Scores />
             <MemoryCards></MemoryCards>
         </div>
     )

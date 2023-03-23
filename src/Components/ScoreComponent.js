@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { increment } from "../Common/score";
+import { increment, reset } from "../Common/score";
 
 export function ScoreComponent() {
     const score = useSelector(state => state.score.value);
@@ -8,7 +8,7 @@ export function ScoreComponent() {
 
     return (
         <div>
-            <button onClick={() => dispatch(increment())}
+            <button onClick={() => dispatch(reset())}
             >Increment</button>
             <span>{score}</span>
         </div>
